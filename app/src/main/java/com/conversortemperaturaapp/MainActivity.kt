@@ -16,10 +16,17 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.buttonConverter.setOnClickListener {
-            val clesius =  binding.editCelsius.text.toString().toDouble()
-            val fahrenheit = clesius * 1.8 + 32
+            if(!binding.editCelsius.text.toString().isEmpty()){
 
-            binding.textResultado.text = "$fahrenheit ºF"
+                val clesius =  binding.editCelsius.text.toString().toDouble()
+                val fahrenheit = String.format("%.2f",clesius * 1.8 + 32)
+
+                binding.textResultado.text = "$fahrenheit ºF"
+
+            } else {
+                binding.textResultado.text = "Temperatura inválida"
+            }
+
         }
 
     }
